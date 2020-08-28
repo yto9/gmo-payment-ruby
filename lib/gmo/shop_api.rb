@@ -210,6 +210,13 @@ module GMO
         post_request name, options
       end
 
+      def entry_tran_paypal(options = {})
+        name = "EntryTranPaypal.idPass"
+        required = [:order_id, :job_cd, :amount]
+        assert_required_options(required, options)
+        post_request name, options
+      end
+
       ### @params ###
       # AccessID
       # AccessPass
@@ -335,6 +342,13 @@ module GMO
       def change_tran_brandtoken(options = {})
         name = "ChangeTranBrandtoken.idPass"
         required = [:access_id, :access_pass, :order_id, :job_cd, :amount]
+        assert_required_options(required, options)
+        post_request name, options
+      end
+
+      def exec_tran_paypal(options = {})
+        name = "ExecTranPaypal.idPass"
+        required = [:access_id, :access_pass, :order_id, :item_name, :redirect_url]
         assert_required_options(required, options)
         post_request name, options
       end
