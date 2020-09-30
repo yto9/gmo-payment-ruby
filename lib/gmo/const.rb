@@ -130,6 +130,7 @@ module GMO
       :token                 => "Token",
       :token_seq             => "TokenSeq",
       :token_type            => "TokenType",
+      :trade_client_mailaddress => "TradeClientMailaddress",
       :trade_days            => "TradeDays",
       :error_rcv_url         => "ErrorRcvURL",
       :product_name          => "ProductName",
