@@ -26,6 +26,7 @@ module GMO
       :address_5             => "Address5",
       :address_6             => "Address6",
       :amount                => "Amount",
+      :auth_code             => "Auth_Code",
       :bank_code             => "Bank_Code",
       :bank_id               => "Bank_ID",
       :branch_code           => "Branch_Code",

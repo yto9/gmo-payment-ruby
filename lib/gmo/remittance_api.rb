@@ -276,6 +276,37 @@ module GMO
       ###########
       # Method
       # Deposit_ID
+      # Mail_Address
+      # Amount
+      # Auth_Code
+      # Expire
+      # Shop_Mail_Address
+      ### @return ###
+      # Method
+      # Amount
+      # Deposit_ID
+      # Expire
+      ### example ###
+      # gmo.create_mail_deposit_with_auth_code({
+      #   deposit_id: 'dep00001',
+      #   deposit_email: 'anyutzy@demo.com',
+      #   amount: 1000,
+      #   auth_code: '1234ABCD',
+      #   expire: 5,
+      #   deposit_shop_email: 'anyutzy@demo.com'
+      # })
+      # {"Deposit_ID"=>"dep00009", "Method"=>"1", "Amount"=>"1000", "Expire"=>"20170503"}
+      def create_mail_deposit_with_auth_code(options = {})
+        name = "/api/MailDepositRegistration.idPass"
+        options[:method] = 1
+        required = %i(deposit_id deposit_email amount auth_code expire deposit_shop_email)
+        assert_required_options(required, options)
+        post_request name, options
+      end
+
+      ###########
+      # Method
+      # Deposit_ID
       ### @return ###
       # Deposit_ID
       # Method
