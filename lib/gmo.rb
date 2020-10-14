@@ -26,6 +26,7 @@ module GMO
       def api(path, args = {}, verb = "post", options = {}, &error_checking_block)
         # Setup args for make_request
         path = "/payment/#{path}" unless path =~ /^\//
+        path = path.sub(/\..*$/, '.json' ) if options[:json]
         options.merge!({ :host => @host })
         # Make request via the provided service
         result = GMO.make_request path, args, verb, options
@@ -37,8 +38,14 @@ module GMO
           }
           raise GMO::Payment::ServerError.new(result.body, error_detail)
         end
-        # Parse the body as Query string
-        response = Rack::Utils.parse_nested_query(result.body.to_s)
+        if options[:json]
+          # Parse the body as JSON
+          parsed_result = ::JSON.parse(result.body)
+          response = parsed_result.is_a?(Array) ? parsed_result[0] : parsed_result
+        else
+          # Parse the body as Query string
+          response = Rack::Utils.parse_nested_query(result.body.to_s)
+        end
         # converting to UTF-8
         body = response = Hash[response.map { |k,v| [k, NKF.nkf('-w',v)] }]
         # Check for errors if provided a error_checking_block
