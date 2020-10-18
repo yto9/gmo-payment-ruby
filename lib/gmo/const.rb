@@ -30,6 +30,7 @@ module GMO
       :bank_id               => "Bank_ID",
       :branch_code           => "Branch_Code",
       :branch_code_jp        => "Branch_Code_Jpbank",
+      :call_back_url         => "Call_Back_Url",
       :cancel_amount         => "CancelAmount",
       :cancel_tax            => "CancelTax",
       :card_name             => "CardName",

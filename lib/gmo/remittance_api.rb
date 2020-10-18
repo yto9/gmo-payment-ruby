@@ -314,6 +314,13 @@ module GMO
         post_request name, options
       end
 
+      def create_link_redirect_url(options = {})
+        name = "/api/shop/LinkRedirectUrl.json"
+        required = %i(deposit_id call_back_url amount auth_code)
+        assert_required_options(required, options)
+        post_request name, options, { json: true }
+      end
+
       private
 
         def api_call(name, args = {}, verb = "post", options = {})
