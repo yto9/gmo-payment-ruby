@@ -83,6 +83,13 @@ module GMO
         post_request name, options
       end
 
+      def entry_tran_ganb(options = {})
+        name = "EntryTranGANB.idPass"
+        required = [:order_id, :amount]
+        assert_required_options(required, options)
+        post_request name, options
+      end
+
       ### @params ###
       # OrderID
       # JobCd
@@ -103,6 +110,20 @@ module GMO
       # => {"AccessID"=>"139f8ec33a07c55f406937c52ce4473d", "AccessPass"=>"2689b204d2c17192fa35f9269fa7e744"}
       def entry_tran_brandtoken(options = {})
         name = "EntryTranBrandtoken.idPass"
+        required = [:order_id, :job_cd, :amount]
+        assert_required_options(required, options)
+        post_request name, options
+      end
+
+      def entry_tran_ganb(options = {})
+        name = "EntryTranGANB.idPass"
+        required = [:order_id, :amount]
+        assert_required_options(required, options)
+        post_request name, options
+      end
+
+      def entry_tran_pay_pal(options = {})
+        name = "EntryTranPaypal.idPass"
         required = [:order_id, :job_cd, :amount]
         assert_required_options(required, options)
         post_request name, options
@@ -253,6 +274,21 @@ module GMO
         assert_required_options(required, options)
         post_request name, options
       end
+
+      def exec_tran_ganb(options = {})
+        name = "ExecTranGANB.idPass"
+        required = [:access_id, :access_pass, :order_id]
+        assert_required_options(required, options)
+        post_request name, options
+      end
+
+      def exec_tran_pay_pal(options = {})
+        name = "ExecTranPaypal.idPass"
+        required = [:access_id, :access_pass, :order_id, :item_name, :redirect_url]
+        assert_required_options(required, options)
+        post_request name, options
+      end
+      
 
       ## 2.14.2.1.決済変更
       # 仮売上の決済に対して実売上を行います。尚、実行時に仮売上時との金額チェックを行います。
