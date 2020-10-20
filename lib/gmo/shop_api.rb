@@ -83,6 +83,13 @@ module GMO
         post_request name, options
       end
 
+      def entry_tran_ganb(options = {})
+        name = "EntryTranGANB.idPass"
+        required = [:order_id, :amount]
+        assert_required_options(required, options)
+        post_request name, options
+      end
+
       ### @params ###
       # OrderID
       # JobCd
